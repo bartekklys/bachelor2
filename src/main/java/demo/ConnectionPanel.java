@@ -13,6 +13,8 @@ public class ConnectionPanel extends JPanel {
     private JComboBox comboBox;
     public static final String[] conn = {"COM3", "COM4", "COM5"};
     private JButton connectButton;
+    private JButton disconnectButton;
+    private JLabel connectionStatus;
     private Font font = new Font("serif", Font.PLAIN, 12);
 
     public ConnectionPanel() {
@@ -37,9 +39,32 @@ public class ConnectionPanel extends JPanel {
         connectButton = new JButton("Connect");
         connectButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                connectionStatus.setText("Connected");
+                connectionStatus.setForeground(Color.GREEN);
+                connectButton.setEnabled(false);
+                disconnectButton.setEnabled(true);
                 System.out.println(comboBox.getSelectedItem());
             }
         });
         add(connectButton);
+
+        disconnectButton = new JButton("Disconnect");
+        disconnectButton.setEnabled(false);
+        disconnectButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                connectionStatus.setText("Disconnected");
+                connectionStatus.setForeground(Color.RED);
+                connectButton.setEnabled(true);
+                disconnectButton.setEnabled(false);
+            }
+        });
+        add(disconnectButton);
+
+        connectionStatus = new JLabel("Not connected.");
+        connectionStatus.setOpaque(true);
+        connectionStatus.setBackground(Color.BLACK);
+        connectionStatus.setForeground(Color.RED);
+        add(connectionStatus);
+
     }
 }
