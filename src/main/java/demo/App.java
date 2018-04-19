@@ -1,9 +1,6 @@
 package demo;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +11,7 @@ public class App extends JPanel {
     private AnimationPanel animationPanel;
     private ControlPanel controlPanel;
     private JMenuItem fileMI;
+    private JMenuItem helpMI;
 
     public App() {
 
@@ -49,6 +47,14 @@ public class App extends JPanel {
 
         JMenu options = menuBar.add(new JMenu("Options"));
         // to be implemented
+
+        JMenu help = menuBar.add(new JMenu("Help"));
+        helpMI = help.add(new JMenuItem("About..."));
+        helpMI.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(new JFrame(), "Stepper v1\n\n" + "2018 Bartosz Kłys, WIMiIP\n" + "Email: klys.bartosz@gmail.com");
+            }
+        });
 
         return menuBar;
     }
