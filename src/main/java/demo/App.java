@@ -22,24 +22,16 @@ public class App extends JPanel {
 
         mainPanel.add(createMenuBar(), BorderLayout.NORTH);
 
-        EmptyBorder eb = new EmptyBorder(5, 0, 5, 0);
-        BevelBorder bb = new BevelBorder(BevelBorder.LOWERED);
-
         connectionPanel = new ConnectionPanel();
-        connectionPanel.setBorder(new CompoundBorder(eb, bb));
         mainPanel.add(connectionPanel, BorderLayout.SOUTH);
 
         animationPanel = new AnimationPanel();
 
-        animationPanel.setBorder(new CompoundBorder(eb, bb));
-
         mainPanel.add(animationPanel, BorderLayout.CENTER);
 
         controlPanel = new ControlPanel();
-        controlPanel.setBorder(new CompoundBorder(eb, bb));
 
         mainPanel.add(controlPanel, BorderLayout.EAST);
-
     }
 
     private JMenuBar createMenuBar() {

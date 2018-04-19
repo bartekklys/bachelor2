@@ -1,6 +1,8 @@
 package demo;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +13,15 @@ public class ConnectionPanel extends JPanel {
     private JComboBox comboBox;
     public static final String[] conn = {"COM3", "COM4", "COM5"};
     private JButton connectButton;
+    private Font font = new Font("serif", Font.PLAIN, 12);
 
     public ConnectionPanel() {
         setLayout(new FlowLayout());
+
+        TitledBorder connectoinPanelBorder = new TitledBorder(new EtchedBorder());
+        connectoinPanelBorder.setTitleFont(font);
+        connectoinPanelBorder.setTitle("Connect");
+        setBorder(connectoinPanelBorder);
 
         portLabel = new JLabel("Port: ");
         add(portLabel);
